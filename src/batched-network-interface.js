@@ -27,7 +27,8 @@ export class UploadHTTPBatchedNetworkInterface extends HTTPBatchedNetworkInterfa
 
         // Build the form
         const formData = new FormData()
-        formData.append('operations', JSON.stringify(batchOperations))
+        formData.append('query', JSON.stringify(operation.query))
+        formData.append('variables', JSON.stringify(operation.variables))
         batchFiles.forEach(({ operationIndex, files }) => {
           files.forEach(({ variablesPath, file }) =>
             formData.append(`${operationIndex}.${variablesPath}`, file)

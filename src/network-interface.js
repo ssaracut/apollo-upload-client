@@ -15,7 +15,8 @@ export class UploadHTTPFetchNetworkInterface extends HTTPFetchNetworkInterface {
 
         // Build the form
         const formData = new FormData()
-        formData.append('operations', JSON.stringify(operation))
+        formData.append('query', JSON.stringify(operation.query))
+        formData.append('variables', JSON.stringify(operation.variables))
         files.forEach(({ variablesPath, file }) =>
           formData.append(variablesPath, file)
         )
